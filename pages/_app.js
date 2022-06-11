@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import * as gtag from '../lib/gtag'
 import '../styles/globals.scss';
 import { Layout } from '../components';
+import Head from 'next/head'
 
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter()
@@ -40,6 +41,9 @@ const MyApp = ({ Component, pageProps }) => {
           `,
         }}
       />
+      <Head>
+        <title>The Huntsville Unit</title>
+      </Head>
       <Component {...pageProps} />
     </Layout>
   )
