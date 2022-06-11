@@ -1,24 +1,24 @@
-import { useEffect } from 'react'
-import Script from 'next/script'
-import { useRouter } from 'next/router'
-import * as gtag from '../lib/gtag'
+import { useEffect } from 'react';
+import Script from 'next/script';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
+import * as gtag from '../lib/gtag';
 import '../styles/globals.scss';
 import { Layout } from '../components';
-import Head from 'next/head'
 
 const MyApp = ({ Component, pageProps }) => {
-  const router = useRouter()
+  const router = useRouter();
   useEffect(() => {
     const handleRouteChange = (url) => {
-      gtag.pageview(url)
-    }
-    router.events.on('routeChangeComplete', handleRouteChange)
-    router.events.on('hashChangeComplete', handleRouteChange)
+      gtag.pageview(url);
+    };
+    router.events.on('routeChangeComplete', handleRouteChange);
+    router.events.on('hashChangeComplete', handleRouteChange);
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-      router.events.off('hashChangeComplete', handleRouteChange)
-    }
-  }, [router.events])
+      router.events.off('routeChangeComplete', handleRouteChange);
+      router.events.off('hashChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
 
   return (
     <Layout>
@@ -27,6 +27,7 @@ const MyApp = ({ Component, pageProps }) => {
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
       />
+      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4641496209766534" crossOrigin="anonymous" />
       <Script
         id="gtag-init"
         strategy="afterInteractive"
@@ -46,7 +47,7 @@ const MyApp = ({ Component, pageProps }) => {
       </Head>
       <Component {...pageProps} />
     </Layout>
-  )
-}
+  );
+};
 
 export default MyApp;
