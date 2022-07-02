@@ -45,6 +45,10 @@ export const getCategories = async () => {
         categories {
           name
           slug
+          subCategories {
+            name
+            slug
+          }
         }
     }
   `;
@@ -52,6 +56,23 @@ export const getCategories = async () => {
   const result = await request(graphqlAPI, query);
 
   return result.categories;
+};
+
+export const getJobPost = async () => {
+  const query = gql`
+    query jobSubmissions {
+      jobSubmissions {
+        title
+        perHour
+        description
+        jobLink
+      }
+    }
+  `;
+
+  const result = await request(graphqlAPI, query);
+
+  return result.jobSubmissions;
 };
 
 export const getPostDetails = async (slug) => {

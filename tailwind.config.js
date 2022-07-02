@@ -5,6 +5,8 @@ module.exports = {
     extend: {
       spacing: {
         '2/3': '66.666667%',
+        '120': '30rem',
+        '96': '26rem'
       },
     },
   },
@@ -12,5 +14,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-
 };
