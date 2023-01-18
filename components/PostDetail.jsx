@@ -37,6 +37,8 @@ const PostDetail = ({ post }) => {
             src={obj.src}
           />
         );
+      case 'link':
+        return <a key={index} href={obj.href} className="text-md text-blue-700">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</a>;
       default:
         return modifiedText;
     }
